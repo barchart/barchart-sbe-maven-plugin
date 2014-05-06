@@ -14,6 +14,14 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
+	<scm>
+		<url>https://github.com/barchart/barchart-sbe-maven-plugin</url>
+		<connection>scm:git:git://github.com/barchart/barchart-sbe-maven-plugin.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/barchart/barchart-sbe-maven-plugin.git</developerConnection>
+		<tag>master</tag>
+	</scm>
+
+
 	<dependencies>
 
 		<dependency>
