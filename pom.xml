@@ -10,6 +10,8 @@
 	<name>Simple Binary Encoding: Maven Plugin</name>
 	<url>https://github.com/barchart/barchart-sbe-maven-plugin</url>
 
+	<description>A maven plugin for integrating the SbeTool into a maven build. </description>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
