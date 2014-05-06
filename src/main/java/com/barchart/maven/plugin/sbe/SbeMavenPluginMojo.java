@@ -72,7 +72,11 @@ public class SbeMavenPluginMojo extends AbstractMojo {
 					final String namePart = inputFilename.substring(0, nameEnd);
 					final File fullPath = new File(absoluteOutput, namePart + ".sbeir");
 					final IrEncoder irEncoder = new IrEncoder(fullPath.getAbsolutePath(), ir);
-					irEncoder.encode();
+					try {
+						irEncoder.encode();
+					} finally {
+						irEncoder.close();
+					}
 				}
 			}
 		}
@@ -93,7 +97,12 @@ public class SbeMavenPluginMojo extends AbstractMojo {
 		if (resourceFile.getName().endsWith(".xml")) {
 			return new IrGenerator().generate(SbeTool.parseSchema(resourceFile.getAbsolutePath()), targetNamespace);
 		} else if (resourceFile.getName().endsWith(".sbeir")) {
-			return new IrDecoder(resourceFile.getAbsolutePath()).decode();
+			IrDecoder irDecoder = new IrDecoder(resourceFile.getAbsolutePath());
+			try {
+				return irDecoder.decode();
+			} finally {
+				irDecoder.close();
+			}
 		} else {
 			getLog().info("File format not supported.");
 			return null;
