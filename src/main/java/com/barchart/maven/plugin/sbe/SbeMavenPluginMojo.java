@@ -1,4 +1,4 @@
-package uk.co.real_logic.sbe.maven.plugin;
+package com.barchart.maven.plugin.sbe;
 
 import java.io.File;
 import java.io.IOException;
@@ -44,7 +44,6 @@ public class SbeMavenPluginMojo extends AbstractMojo {
 	@Parameter(alias = "resources", required = true)
 	private List<String> resources;
 	
-	@Override
 	public void execute() throws MojoExecutionException, MojoFailureException {
 		getLog().info("Simple Binary Encoding Maven Plugin.");
 		getLog().info("resources: " + resources);
@@ -72,9 +71,8 @@ public class SbeMavenPluginMojo extends AbstractMojo {
 					final int nameEnd = inputFilename.lastIndexOf('.');
 					final String namePart = inputFilename.substring(0, nameEnd);
 					final File fullPath = new File(absoluteOutput, namePart + ".sbeir");
-					try (final IrEncoder irEncoder = new IrEncoder(fullPath.getAbsolutePath(), ir)) {
-						irEncoder.encode();
-					}
+					final IrEncoder irEncoder = new IrEncoder(fullPath.getAbsolutePath(), ir);
+					irEncoder.encode();
 				}
 			}
 		}
