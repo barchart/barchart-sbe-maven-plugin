@@ -5,9 +5,8 @@
 	<parent>
 		<groupId>com.barchart.base</groupId>
 		<artifactId>barchart-archon</artifactId>
-		<version>2.5.13</version>
+		<version>3.0.20</version>
 	</parent>
-
 
 	<groupId>com.barchart</groupId>
 	<artifactId>barchart-sbe-maven-plugin</artifactId>
