@@ -41,10 +41,17 @@ public class SbeMavenPluginMojo extends AbstractMojo {
 	@Parameter(alias = SbeTool.TARGET_LANGUAGE, required = false)
 	private String targetLanguage = "Java";
 
+	@Parameter(alias = SbeTool.KEYWORD_APPEND_TOKEN, required = false)
+	private String keywordAppendToken = "";
+	
 	@Parameter(alias = "resources", required = true)
 	private List<String> resources;
 	
 	public void execute() throws MojoExecutionException, MojoFailureException {
+		if (!keywordAppendToken.isEmpty()) {
+			getLog().info("Setting keywordAppendToken to " + keywordAppendToken);
+			System.setProperty(SbeTool.KEYWORD_APPEND_TOKEN, keywordAppendToken);
+		}
 		getLog().info("Simple Binary Encoding Maven Plugin.");
 		getLog().info("resources: " + resources);
 		try {
